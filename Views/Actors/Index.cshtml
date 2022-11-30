@@ -1,0 +1,54 @@
+﻿@using MoviePlatform.Entities
+@model MoviePlatform.ViewModels.Actors.IndexVM
+
+@{
+    this.ViewData["title"] = "Actors";
+    this.Layout = "/Views/Shared/_Layout.cshtml";
+
+}
+
+
+<form class="d-flex mt-3" role="search" action="/Actors/Index">
+    @Html.HiddenFor(m => m.Pager.ItemsPerPage)
+    @Html.TextBoxFor(m=> m.Filter.Name , new{placeholder = "Search by Name", @class = "form-control me-2"})
+    <button class="btn btn-outline-success" type="submit" value="Filter">Search</button>
+</form>
+
+<a class="btn btn-success mt-3" href="/Actors/Create">Add Actor</a>
+
+
+<div class="container mt-4">
+    <div class="row">
+
+        @foreach (Actor item in Model.Items)
+        {
+            string more = item.Name;
+            string redirect = "http://www.google.co.uk/search?hl=en&q=" + more + "&meta=";
+
+            <div class="col-md-3 mb-4">
+                <div class="card" style="width: 16rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">@item.Age</h6>
+                        
+                        
+
+                        <a href="@redirect" class="btn mr-2"><i class="fas fa-link"></i> See More</a>
+                        <a href="/Actors/Edit?id=@item.Id" class="btn mr-2"><i class="fas fa-info"></i> Edit info</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+
+    <div class="row pager">
+        <div class="col-3">
+            @{
+                Html.RenderPartial("/Views/Partial/PagerPartial.cshtml", Model.Pager);
+            }
+        </div>
+    </div>
+
+</div>
+

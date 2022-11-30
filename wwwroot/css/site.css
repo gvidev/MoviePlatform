@@ -1,0 +1,91 @@
+
+
+.btn-color {
+    background-color: #0e1c36;
+    color: #fff;
+}
+
+.profile-image-pic {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+}
+
+
+
+.cardbody-color {
+    background-color: #ebf2fa;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.field-validation-error{
+    color: red;
+
+}
+
+
+
+
+
+
+
+.grid {
+    display: inline-block;
+    width: 100%;
+}
+
+    .grid .row {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 1px;
+    }
+
+        .grid .row .col-1 {
+            display: inline-block;
+            width: 150px;
+        }
+
+        .grid .row .col-2 {
+            display: inline-block;
+            width: 300px;
+        }
+
+        .grid .row .col-3 {
+            display: inline-block;
+            width: 450px;
+        }
+
+        .grid .row input[type=text] {
+            width: 300px;
+        }
+
+        .grid .row input[type=password] {
+            width: 300px;
+        }
+
+        .grid .row textarea {
+            width: 300px;
+            height: 150px;
+        }
+
+.right {
+    float: right;
+}
+
+.field-validation-error {
+    color: red;
+}
+
+.pager a {
+    margin: 0px 1px;
+    text-decoration: none;
+    color: blue;
+}
+
+.pager select {
+    margin-left: 5px;
+}

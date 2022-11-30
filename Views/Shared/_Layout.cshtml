@@ -1,0 +1,125 @@
+﻿
+@using MoviePlatform.Entities
+@using MoviePlatform.Extentions;
+@{
+    User loggedUser = this.ViewContext.HttpContext.Session.GetObject<User>("loggedUser");
+}
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/site.css">
+
+</head>
+<body>
+
+
+    @*navbar*@
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/Service/Index">Movie Platform</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/Home/Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="/Movies/Index">Movies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="/Actors/Index">Actors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="/Favourites/Index">Favourites</a>
+                    </li>
+
+                    
+                </ul>
+
+                <span class="navbar-text mx-2">
+                    Hi, <span>
+                        @(loggedUser == null ? "Annonymous" : loggedUser.FirstName)@*or username*@
+                    </span>
+                </span>
+
+                 <ul class="navbar-nav ml-auto">
+                     @if (@loggedUser != null)
+                    {
+                        <li class="nav-item ">
+                            <a class="nav-link " href="/Home/Logout">Sign Out</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item ">
+                            <a class="nav-link " href="/Home/Login">Sign In</a>
+                        </li>
+                    }
+                     </ul>
+
+                
+            </div>
+        </div>
+    </nav>
+
+
+    @*rendering the body of which action*@
+    <div class="container">
+        @RenderBody()
+    </div>
+    
+    @*footer*@
+    <footer class="bg-light text-center text-white ">
+        @*fixed-bottom*@
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Social media -->
+            <section class="mb-4 ">
+                
+                <!-- Google -->
+                <a class="btn text-white btn-floating m-1"
+                   style="background-color: #dd4b39;"
+                   href="#!"
+                   role="button">
+                    <i class="fab fa-google"></i>
+                </a>
+
+                
+
+                <!-- Linkedin -->
+                <a class="btn text-white btn-floating m-1"
+                   style="background-color: #0082ca;"
+                   href="https://linkedin.com/in/georgi-videv"
+                   role="button">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <!-- Github -->
+                <a class="btn text-white btn-floating m-1"
+                   style="background-color: #333333;"
+                   href="https://github.com/gvidev"
+                   role="button">
+                    <i class="fab fa-github"></i>
+                </a>
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.4);">
+            © 2022 Copyright: Georgi Videv
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+    <script src="https://kit.fontawesome.com/b87bae8419.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</body>
+</html>
+

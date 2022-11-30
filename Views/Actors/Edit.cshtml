@@ -1,0 +1,50 @@
+﻿@model MoviePlatform.ViewModels.Actors.EditVM
+@{
+    this.ViewData["title"] = "Actors_Edit";
+    this.Layout = "/Views/Shared/_Layout.cshtml";
+
+
+}
+
+<fieldset>
+    <legend>Edit Actor</legend>
+    <form action="/Actors/Edit" method="post">
+        @Html.HiddenFor(m => m.Id)
+        <div class="grid">
+            <div class="row">
+                <div class="col-1">
+                    @Html.LabelFor(m => m.Name)
+                </div>
+                <div class="col-2">
+                    @Html.TextBoxFor(m => m.Name)
+                </div>
+                <div class="col-2">
+                    @Html.ValidationMessageFor(m => m.Name)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    @Html.LabelFor(m => m.Age)
+                </div>
+                <div class="col-2">
+                    @Html.TextBoxFor(m => m.Age)
+                </div>
+                <div class="col-2">
+                    @Html.ValidationMessageFor(m => m.Age)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    @Html.ValidationMessage("summaryError")
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-2">
+                    <input type="submit" class="right" value="Save" />
+                    <a href="/Actors/Index" class="right">Back</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</fieldset>

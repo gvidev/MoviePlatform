@@ -1,0 +1,48 @@
+﻿@model MoviePlatform.ViewModels.Users.LoginVM
+@{
+    this.ViewData["title"] = "LOGIN";
+    this.Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2 class="text-center text-dark mt-5">Sign In</h2>
+            <div class="text-center mb-5 text-dark">Welcome back! Please enter your details.</div>
+            <div class="card my-5">
+
+                <form class="card-body cardbody-color p-lg-5 " action="/Home/Login" method="post">
+
+                    <div class="text-center">
+                        <img src="/images/giraffe.jpg" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                             width="200px" alt="profile">
+                    </div>
+
+                    <div class="mb-3">
+                        @Html.TextBoxFor(m => m.Username , new {@Class = "form-control",@Placeholder="Username" })
+                        @Html.ValidationMessageFor(m => m.Username)
+                    </div>
+                    <div class="mb-3">
+                        @Html.PasswordFor(m => m.Password , new {@Class = "form-control",@Placeholder="Password" })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                    <div class="mb-3">
+                       
+                        @Html.ValidationMessage("authError")
+                    </div>
+                    <div class="text-center"><button type="submit" value="Login" class="btn btn-color px-5 mb-5 w-100">Login</button></div>
+                    <div id="emailHelp" class="form-text text-center mb-5 text-dark">
+                        Not
+                        Registered? <a href="/Home/Registration" class="text-dark fw-bold">
+                            Create an
+                            Account
+                        </a>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

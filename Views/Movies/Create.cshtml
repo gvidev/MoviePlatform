@@ -1,0 +1,103 @@
+﻿@using MoviePlatform.Entities
+@using MoviePlatform.Repo
+@model MoviePlatform.ViewModels.Movies.CreateVM
+@{
+    this.Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["title"] = "Create Movie";
+}
+
+@*@foreach(Actor item in context.Actors){
+    Model.Actors.Add(item);
+}*@
+
+<fieldset>
+    @Html.HiddenFor(m => m.Actors)
+    <legend>Add movie</legend>
+    <form action="/Movies/Create" method="post">
+        <div class="grid">
+            <div class="row">
+                <div class="col-1">
+                    @Html.LabelFor(m => m.Title)
+                </div>
+                <div class="col-2">
+                    @Html.TextBoxFor(m => m.Title)
+                </div>
+                <div class="col-2">
+                    @Html.ValidationMessageFor(m => m.Title)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    @Html.LabelFor(m => m.Description)
+                </div>
+                <div class="col-2">
+                    @Html.TextAreaFor(m => m.Description)
+                </div>
+                <div class="col-2">
+                    @Html.ValidationMessageFor(m => m.Description)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    @Html.LabelFor(m => m.Duration)
+                </div>
+                <div class="col-2">
+                    @Html.TextBoxFor(m => m.Duration)
+                </div>
+                <div class="col-2">
+                    @Html.ValidationMessageFor(m => m.Duration)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    @Html.LabelFor(m => m.imageUrl)
+                </div>
+                <div class="col-2">
+                    @Html.TextBoxFor(m => m.imageUrl)
+                </div>
+                <div class="col-2">
+                    @Html.ValidationMessageFor(m => m.imageUrl)
+                </div>
+            </div>
+
+            
+
+            @if (Model.Actors.Count() <= 0)
+            {
+                <h1>No Actors to add!</h1>
+            }
+            else
+            {
+                <h1>Actors: </h1>
+                foreach (Actor item in Model.Actors)
+                {
+                    <div class="row">
+                        <div class="col-3">
+                            <input type="checkbox" name="actorId" value="@item.Id" />
+                            <span>@item.Name</span>                       
+                        </div>
+                    </div>
+                }
+
+            }
+
+            <div class="row">
+                <div class="col-3">
+                    @Html.ValidationMessage("summaryError")
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-2">
+                    <input type="submit" class="right" value="Save" />
+                    <a href="/Movies/Index" class="right">Back</a>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+   
+
+
+</fieldset>
